@@ -14,9 +14,9 @@ Key positions:
 #include <dt-bindings/zmk/keys.h>
 #include <dt-bindings/zmk/bt.h>
 #include <dt-bindings/zmk/ext_power.h>
-#include "../zmk-nodefree-config/helper.h"
-#include "../zmk-nodefree-config/keypos_def/keypos_42keys.h"
-#include "../zmk-nodefree-config/international_chars/danish.dtsi"
+#include "zmk-helpers/helper.h"
+#include "zmk-helpers/keypos_def/42.h"
+#include "zmk-helpers/unicode-chars/danish.dtsi"
 
 #define ___ &trans
 
@@ -34,16 +34,18 @@ Key positions:
 ZMK_COMBO( z,      &kp Z,        1   2, DEF)
 ZMK_COMBO( q,      &kp Q,         7  9, DEF)
 ZMK_COMBO( mute,   &kp C_MUTE,  12  24, NN)
-ZMK_COMBO(aa,      &dk_aa,       7  19, DEF)
-ZMK_COMBO(ae,      &dk_ae,      19  20, DEF)
-ZMK_COMBO(oe,      &dk_oe,      20  32, DEF)
+ZMK_COMBO(aa,      &da_aa,       7  19, DEF)
+ZMK_COMBO(ae,      &da_ae,      19  20, DEF)
+ZMK_COMBO(oe,      &da_oe,      20  32, DEF)
 
+#TODO: REPLACE ZMK_BEHAVIOR with explicit behavior helpers
 ZMK_BEHAVIOR(ss_cw, tap_dance,
     tapping-term-ms = <200>;
     bindings = <&sk LSHFT>, <&caps_word>;
 )
 
 //like layer-tap, but toggle tap instead
+#TODO: REPLACE ZMK_BEHAVIOR with explicit behavior helpers
 ZMK_BEHAVIOR(tt, hold_tap,
     flavor = "balanced";
     tapping-term-ms = <280>;
