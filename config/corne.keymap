@@ -38,14 +38,14 @@ ZMK_COMBO(aa,      &da_aa,       7  19, DEF)
 ZMK_COMBO(ae,      &da_ae,      19  20, DEF)
 ZMK_COMBO(oe,      &da_oe,      20  32, DEF)
 
-#TODO: REPLACE ZMK_BEHAVIOR with explicit behavior helpers
+//TODO: REPLACE ZMK_BEHAVIOR with explicit behavior helpers
 ZMK_BEHAVIOR(ss_cw, tap_dance,
     tapping-term-ms = <200>;
     bindings = <&sk LSHFT>, <&caps_word>;
 )
 
 //like layer-tap, but toggle tap instead
-#TODO: REPLACE ZMK_BEHAVIOR with explicit behavior helpers
+//TODO: REPLACE ZMK_BEHAVIOR with explicit behavior helpers
 ZMK_BEHAVIOR(tt, hold_tap,
     flavor = "balanced";
     tapping-term-ms = <280>;
