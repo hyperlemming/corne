@@ -15,30 +15,29 @@ Key positions:
 #include <dt-bindings/zmk/bt.h>
 #include <dt-bindings/zmk/ext_power.h>
 #include <dt-bindings/zmk/backlight.h>
+#include <dt-bindings/zmk/rgb.h>
 #include <layouts/foostan/corne/6column.dtsi>
 #include "zmk-helpers/helper.h"
 #include "zmk-helpers/key-labels/42.h"
-#include "zmk-helpers/unicode-chars/danish.dtsi"
+
 
 #define ___ &trans
 
 // Layer aliases
 #define DEF 0
 #define NUM 1
-#define SYM 2
-#define NN 3
-#define QWE 4
+#define NAV 2
 
 &led_strip {
     chain-length = <27>;
 };
 
-ZMK_COMBO( z,      &kp Z,        1   2, DEF)
-ZMK_COMBO( q,      &kp Q,         7  9, DEF)
-ZMK_COMBO( mute,   &kp C_MUTE,  12  24, NN)
-ZMK_COMBO(aa,      &da_aa,       7  19, DEF)
-ZMK_COMBO(ae,      &da_ae,      19  20, DEF)
-ZMK_COMBO(oe,      &da_oe,      20  32, DEF)
+ZMK_COMBO( z,      &kp Z,                        1  2, DEF)
+ZMK_COMBO( q,      &kp Q,                        7  9, DEF)
+ZMK_COMBO( ff,     &kp C_FAST_FORWARD,          32 33, NAV)
+ZMK_COMBO( sl,     &kp C_SLOW,                  31 32, NAV)
+ZMK_COMBO( rew,    &kp C_REWIND,                18 30, NAV)
+
 
 //TODO: REPLACE ZMK_BEHAVIOR with explicit behavior helpers
 ZMK_BEHAVIOR(ss_cw, tap_dance,
@@ -55,62 +54,23 @@ ZMK_BEHAVIOR(tt, hold_tap,
     bindings = <&tog>, <&kp>;
 )
 
-ZMK_LAYER(default,
-//╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮   ╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮
-    &kp TAB       &kp J         &kp G         &kp M         &kp P         &kp V             &kp MINUS     &kp U         &kp O         &kp Y         &kp K         &kp BSPC
-//├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤   ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤ 
-    &ss_cw        &kp R         &kp S         &kp N         &kp D         &kp B             &kp COMMA     &kp A         &kp E         &kp I         &kp H         &ext_power EP_TOG
-//├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤   ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤ 
-    &kp LCTRL     &kp X         &kp F         &kp L         &kp C         &kp W             &kp SEMI      &kp DOT       &kp SLASH     &kp DQT       &kp SQT       &tt QWE ESC
-//╰─────────────┴─────────────┴─────────────┼─────────────┼─────────────┼─────────────┤   ├─────────────┼─────────────┼─────────────┼─────────────┴───────────────────────────╯
-                                              &mt LALT Z    &lt SYM T     &mo NUM           &lt NUM RET   &lt SYM SPACE &tt NN LMETA 
-//                                          ╰─────────────┴─────────────┴─────────────╯   ╰─────────────┴─────────────┴─────────────╯
+ZMK_LAYER(base,
+    &kp TAB        &kp J           &kp G           &kp M           &kp P           &kp V            &kp MINUS     &kp U          &kp O         &kp Y         &kp K         &kp BSPC
+    &ss_cw         &kp R           &kp S           &kp N           &kp D           &kp B            &kp COMMA     &kp A          &kp E         &kp I         &kp H         &kp Q
+    &kp LCTRL      &kp X           &kp F           &kp L           &kp C           &kp W            &kp SEMI      &kp DOT        &kp SLASH     &kp SQT       &kp BSLH      &kp ESC
+                                                   &kp Z           &kp T           &mo NUM          &lt NAV RET   &kp SPACE      &kp LALT
 )
 
 ZMK_LAYER(numeric,
-//╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮   ╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮
-    &kp TAB      &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 3  &bt BT_SEL 4  &bt BT_CLR         &kp UNDER     ___           &kp PLUS      &kp MINUS     &kp EQUAL     &kp DEL
-//├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤   ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤ 
-    &kp TILDE     &kp N1        &kp N2        &kp N3        &kp N4        &kp N5            &kp N6        &kp N7        &kp N8        &kp N9        &kp N0        ___
-//├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤   ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤ 
-    ___           ___           ___           ___           ___           ___               ___           ___           ___           ___           ___           ___           
-//╰─────────────┴─────────────┴─────────────┼─────────────┼─────────────┼─────────────┤   ├─────────────┼─────────────┼─────────────┼─────────────┴───────────────────────────╯
-                                              ___           ___           ___               &kp RET       &kp SPACE     ___           
-//                                          ╰─────────────┴─────────────┴─────────────╯   ╰─────────────┴─────────────┴─────────────╯
-)
-
-ZMK_LAYER(symbolic,
-//╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮   ╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮
-    &kp  TAB      &kp PIPE      &kp GRAVE     &bl BL_TOG    &bl BL_INC    &bl BL_DEC        &kp UNDER     ___           &kp LBKT      &kp RBKT      &kp BSLH      &kp BSPC
-//├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤   ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤ 
-    &kp TILDE     &kp EXCL      &kp AT        &kp HASH      &kp DLLR      &kp PRCNT         &kp CARET     &kp AMPS      &kp LPAR      &kp RPAR      &kp LT        &kp GT
-//├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤   ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤ 
-    ___           ___           ___           ___           ___           ___               &kp COLON     ___           &kp LBRC      &kp RBRC      &kp SLASH      &kp QMARK
-//╰─────────────┴─────────────┴─────────────┼─────────────┼─────────────┼─────────────┤   ├─────────────┼─────────────┼─────────────┼─────────────┴───────────────────────────╯
-                                              ___            ___          ___               &kp RET       &kp SPACE     ___
-//                                          ╰─────────────┴─────────────┴─────────────╯   ╰─────────────┴─────────────┴─────────────╯
+    &kp TAB        ___             ___             ___             ___             ___              &kp GRAVE     &kp LPAR       &kp RPAR      &kp LBKT      &kp RBKT      &kp BSPC
+    ___            &kp N1          &kp N2          &kp N3          &kp N4          &kp N5           &kp N6        &kp N7         &kp N8        &kp N9        &kp N0        &kp EQUAL
+    ___            ___             ___             ___             ___             ___              ___           &kp LBRC       &kp RBRC      &kp LT        &kp GT        ___
+                                                   ___             ___             ___              &kp RET       &kp SPACE      &kp LALT
 )
 
 ZMK_LAYER(nav,
-//╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮   ╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮
-    &kp TAB       &kp LGUI      &kp HOME       &kp UP       &kp END      &kp PG_UP          &kp COMMA     &kp N7        &kp N8        &kp N9        &kp EQUAL     &kp BSPC
-//├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤   ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤ 
-    &kp C_VOL_UP  &kp INS       &kp LEFT      &kp DOWN      &kp RIGHT     &kp PG_DN         &kp DOT       &kp N4        &kp N5        &kp N6        &kp PLUS      &kp MINUS 
-//├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤   ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤ 
-    &kp C_VOL_DN  &kp LC(X)     &kp LC(INS)   &kp LS(INS)   &kp LC(Z)     &kp LC(Y)         &kp N0        &kp N1        &kp N2        &kp N3        &kp KP_MULTIPLY &kp SLASH
-//╰─────────────┴─────────────┴─────────────┼─────────────┼─────────────┼─────────────┤   ├─────────────┼─────────────┼─────────────┼─────────────┴───────────────────────────╯
-                                              &tog NN       &kp LCTRL     &kp C_PP          &kp RET       &kp SPACE     &tog NN
-//                                          ╰─────────────┴─────────────┴─────────────╯   ╰─────────────┴─────────────┴─────────────╯
-)
-
-ZMK_LAYER(qwerty,     
-//╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮   ╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮
-    &kp TAB       &kp Q         &kp W         &kp E         &kp R         &kp T             &kp Y         &kp U         &kp I         &kp O         &kp P         &kp BSPC   
-//├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤   ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤ 
-    &kp LSHFT     &kp A         &kp S         &kp D         &kp F         &kp G             &kp H         &kp J         &kp K         &kp L         &kp SEMI      &kp SQT
-//├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤   ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤ 
-    &kp LCTRL     &kp Z         &kp X         &kp C         &kp V         &kp B             &kp N         &kp M         &kp COMMA     &kp DOT       &kp SLASH     &tt QWE ESC 
-//╰─────────────┴─────────────┴─────────────┼─────────────┼─────────────┼─────────────┤   ├─────────────┼─────────────┼─────────────┼─────────────┴───────────────────────────╯
-                                              &kp LALT      &kp SPACE     &kp C_PP          &kp RET       &kp SPACE     &kp LMETA
-//                                          ╰─────────────┴─────────────┴─────────────╯   ╰─────────────┴─────────────┴─────────────╯
+    &kp TAB        &rgb_ug RGB_EFF &rgb_ug RGB_SPI &rgb_ug RGB_SAI &rgb_ug RGB_HUI &rgb_ug RGB_BRI  &kp C_VOL_UP  &kp HOME       &kp UP        &kp END       &kp TAB       &kp BSPC
+    ___            &rgb_ug RGB_EFR &rgb_ug RGB_SPD &rgb_ug RGB_SAD &rgb_ug RGB_HUD &rgb_ug RGB_BRD  &kp C_VOL_DN  &kp LEFT       &kp DOWN      &kp RIGHT     &kp INS       &kp PG_UP
+    ___            &rgb_ug RGB_TOG &bt BT_SEL 0    &bt BT_SEL 1    &bt BT_SEL 3    &bt BT_CLR       &kp C_MUTE    &kp C_PREV     &kp C_PP      &kp C_NEXT    &kp LMETA     &kp PG_DN
+                                                   ___             ___             ___              &kp RET       &kp SPACE      &kp LALT
 )
