@@ -81,7 +81,7 @@ ZMK_BEHAVIOR(tt, hold_tap,
     bindings = <&tog>, <&kp>;
 )
 
-ZMK_LAYER(DEF,
+ZMK_LAYER_3(DEF,
     &kp TAB        &kp J           &kp G           &kp M           &kp P           &kp W            &kp MINUS     &kp U          &kp O         &kp Y         &kp K         &kp BSPC
     &ss_cw         &kp R           &kp S           &kp N           &kp D           &kp B            &kp COMMA     &kp A          &kp E         &kp I         &kp H         &kp Q
     &kp LCTRL      &kp X           &kp F           &kp L           &kp C           &kp V            &kp SEMI      &kp DOT        &kp SLASH     &kp SQT       &kp BSLH      &kp ESC
@@ -89,7 +89,7 @@ ZMK_LAYER(DEF,
     &inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp PG_UP PG_DN
 )
 
-ZMK_LAYER(NUM,
+ZMK_LAYER_3(NUM,
     &kp TAB        ___             ___             ___             ___             ___              &kp GRAVE     &kp LPAR       &kp RPAR      &kp LBRC      &kp RBRC      &kp BSPC
     ___            &kp N1          &kp N2          &kp N3          &kp N4          &kp N5           &kp N6        &kp N7         &kp N8        &kp N9        &kp N0        &kp EQUAL
     ___            ___             ___             ___             ___             ___              ___           &kp LBKT       &kp RBKT      &kp LT        &kp GT        ___
@@ -97,7 +97,7 @@ ZMK_LAYER(NUM,
     &inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp PG_UP PG_DN
 )
 
-ZMK_LAYER(NAV,
+ZMK_LAYER_3(NAV,
     &kp TAB        &rgb_ug RGB_EFF &rgb_ug RGB_SPI &rgb_ug RGB_SAI &rgb_ug RGB_HUI &rgb_ug RGB_BRI  &kp C_VOL_UP  &kp HOME       &kp UP        &kp END       &kp TAB       &kp DEL
     ___            &rgb_ug RGB_EFR &rgb_ug RGB_SPD &rgb_ug RGB_SAD &rgb_ug RGB_HUD &rgb_ug RGB_BRD  &kp C_VOL_DN  &kp LEFT       &kp DOWN      &kp RIGHT     &kp INS       &kp PG_UP
     ___            &rgb_ug RGB_TOG &bt BT_SEL 0    &bt BT_SEL 1    &bt BT_SEL 3    &bt BT_CLR       &kp C_MUTE    &kp C_PREV     &kp C_PP      &kp C_NEXT    &kp LMETA     &kp PG_DN
