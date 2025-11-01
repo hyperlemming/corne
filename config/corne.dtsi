@@ -69,16 +69,16 @@ RC(2,1) RC(2,2) RC(2,3) RC(2,4) RC(2,5)  RC(2,6) RC(2,7) RC(2,8) RC(2,9) RC(2,10
         status = "disabled";
     };
     
-    left_encoder_switch: encoder_switch_left {
-        compatible = "alps,ec11";
-        sw-gpios = <&gpio0 7 (GPIO_PULL_UP | GPIO_ACTIVE_LOW)>;
-        status = "disabled";
-    };
-    
-    right_encoder_switch: encoder_switch_right {
-        compatible = "alps,ec11";
-        sw-gpios = <&gpio0 7 (GPIO_PULL_UP | GPIO_ACTIVE_LOW)>;
-        status = "disabled";
+    encoder_switches {
+        compatible = "gpio-keys";
+        
+        left_encoder_switch: button_0 {
+            gpios = <&gpio0 7 (GPIO_PULL_UP | GPIO_ACTIVE_LOW)>;
+        };
+        
+        right_encoder_switch: button_1 {
+            gpios = <&gpio0 7 (GPIO_PULL_UP | GPIO_ACTIVE_LOW)>;
+        };
     };
     
     sensors: sensors {
