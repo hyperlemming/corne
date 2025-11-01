@@ -13,9 +13,9 @@
 
 
 &left_encoder {
-	status = "okay";
+	status = "disabled";
 };
 
 &left_encoder_switch {
-    status = "okay";
+    status = "disabled";
 };
