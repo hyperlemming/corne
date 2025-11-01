@@ -81,7 +81,7 @@ Keyboard: Corne 6 column
     &kp LCTRL  &kp X     &kp F      &kp L      &kp C      &kp V        &kp SEMI   &kp DOT    &kp SLASH  &kp SQT    &kp BSLH   &kp ESC
                                     &kp Z      &kp T      &mo NUM      &lt NAV RET &kp SPACE &kp LALT
             >;
-            sensor-bindings = <&inc_dec_kp UP DOWN>, <&inc_dec_kp C_VOL_UP C_VOL_DN>;
+            sensor-bindings = <&inc_dec_kp UP DOWN &inc_dec_kp C_VOL_UP C_VOL_DN>;
         };
 
         num_layer {
@@ -91,7 +91,7 @@ Keyboard: Corne 6 column
     ___      ___      ___      ___      ___      ___          ___        &kp LBKT   &kp RBKT   &kp LT     &kp GT     ___
                                ___      ___      ___          &kp RET    &kp SPACE  &kp LALT
             >;
-            sensor-bindings = <&inc_dec_kp UP DOWN>, <&inc_dec_kp C_VOL_UP C_VOL_DN>;
+            sensor-bindings = <&inc_dec_kp UP DOWN &inc_dec_kp C_VOL_UP C_VOL_DN>;
         };
 
         nav_layer {
@@ -101,7 +101,7 @@ Keyboard: Corne 6 column
     ___      &rgb_ug RGB_TOG &bt BT_SEL 0    &bt BT_SEL 1    &bt BT_SEL 3    &bt BT_CLR         &kp C_MUTE    &kp C_PREV &kp C_PP   &kp C_NEXT &kp LMETA  &kp PG_DN
                                              ___             ___             ___                &kp RET       &kp SPACE  &kp LALT
             >;
-            sensor-bindings = <&inc_dec_kp UP DOWN>, <&inc_dec_kp C_VOL_UP C_VOL_DN>;
+            sensor-bindings = <&inc_dec_kp UP DOWN &inc_dec_kp C_VOL_UP C_VOL_DN>;
         };
     };
 };
