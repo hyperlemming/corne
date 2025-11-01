@@ -23,3 +23,7 @@
 &right_encoder {
 	status = "okay";
 };
+
+&right_encoder_switch {
+    status = "okay";
+};
