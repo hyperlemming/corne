@@ -10,12 +10,12 @@ config ZMK_SPLIT
     default y
 
 config ZMK_SPLIT_BLE_CENTRAL_PERIPHERALS
-    default 2  # Change to 3 for macropad
+    default 3  # Change to 3 for macropad
 
 config BT_MAX_CONN
-    default 7  # Change to 8 for macropad (3 peripherals + 5 profiles)
+    default 8  # Change to 8 for macropad (3 peripherals + 5 profiles)
 
 config BT_MAX_PAIRED
-    default 7  # Change to 8 for macropad
+    default 8  # Change to 8 for macropad
 
 endif
