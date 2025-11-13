@@ -28,10 +28,6 @@ Key positions:
 #define NUM 1
 #define NAV 2
 
-&led_strip {
-    chain-length = <27>;
-};
-
 // Encoder sensors (only right encoder installed)
 / {
     sensors: sensors {
