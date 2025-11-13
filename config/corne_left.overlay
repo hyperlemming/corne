@@ -19,3 +19,7 @@
 &left_encoder_switch {
     status = "disabled";
 };
+
+&led_strip {
+    chain-length = <27>;
+};
