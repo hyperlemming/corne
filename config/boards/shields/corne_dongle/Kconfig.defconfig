@@ -1,4 +1,4 @@
-if SHIELD_CORNE_DONGLE
+if SHIELD_CORNE_LEFT
 
 config ZMK_KEYBOARD_NAME
     default "Corne"
@@ -6,16 +6,28 @@ config ZMK_KEYBOARD_NAME
 config ZMK_SPLIT_ROLE_CENTRAL
     default y
 
-config ZMK_SPLIT
+endif
+
+if SHIELD_CORNE_RIGHT
+
+config ZMK_KEYBOARD_NAME
+    default "Corne Right"
+
+endif
+
+if SHIELD_CORNE_DONGLE
+
+config ZMK_KEYBOARD_NAME
+    default "Corne Dongle"
+
+config ZMK_SPLIT_ROLE_CENTRAL
     default y
 
-config ZMK_SPLIT_BLE_CENTRAL_PERIPHERALS
-    default 3  # Change to 3 for macropad
+endif
 
-config BT_MAX_CONN
-    default 8  # Change to 8 for macropad (3 peripherals + 5 profiles)
+if SHIELD_CORNE_LEFT || SHIELD_CORNE_RIGHT || SHIELD_CORNE_DONGLE
 
-config BT_MAX_PAIRED
-    default 8  # Change to 8 for macropad
+config ZMK_SPLIT
+    default y
 
 endif
