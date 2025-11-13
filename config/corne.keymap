@@ -10,7 +10,6 @@ Key positions:
 */
 
 #include <behaviors.dtsi>
-#include <behaviors/mouse_keys.dtsi>
 #include <dt-bindings/zmk/keys.h>
 #include <dt-bindings/zmk/bt.h>
 #include <dt-bindings/zmk/mouse.h>
@@ -98,7 +97,7 @@ ZMK_LAYER_3(DEF,
     &ss_cw         &kp R           &kp S           &kp N           &kp D           &kp B            &kp COMMA     &kp A          &kp E         &kp I         &lt NAV H     &kp Q
     &kp LCTRL      &kp X           &kp F           &kp L           &kp C           &kp V            &kp SEMI      &kp DOT        &kp SLASH     &kp SQT       &kp BSLH      &kp ESC
                                                    &kp Z           &kp T           &mo NUM          &lt NAV RET   &kp SPACE      &kp LALT,
-    &inc_dec_msc SCRL_UP SCRL_DOWN
+    &inc_dec_kp SCRL_UP SCRL_DOWN
 )
 
 ZMK_LAYER_3(NUM,
