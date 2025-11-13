@@ -2,7 +2,7 @@
 
 / {
     chosen {
-        zephyr,display = &nice_view;  // Changed from &oled
+        //zephyr,display = &nice_view;  // Changed from &oled
         zmk,kscan = &mock_kscan;      // Point to mock kscan
         zmk,physical-layout = &foostan_corne_6col_layout;
     };
