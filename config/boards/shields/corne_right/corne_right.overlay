@@ -24,7 +24,7 @@
 	status = "okay";
 };
 
-&right_encoder_switch {
+&encoder_kscan {
     status = "okay";
 };
 
