@@ -28,50 +28,43 @@ Key positions:
 #define NUM 1
 #define NAV 2
 
-// Encoder sensors (only right encoder installed)
-/ {
-    sensors: sensors {
-        compatible = "zmk,keymap-sensors";
-        sensors = <&right_encoder>;
-        triggers-per-rotation = <15>;
-    };
-};
+// DEF layer encoder switches
+ZMK_BEHAVIOR(enc_sw_left_def, tap_dance,
+    tapping-term-ms = <200>;
+    bindings = <&kp C_PP>, <&kp C_MUTE>;  // play/pause, mute
+)
 
-// Tap dance behaviors for encoder clicks
-/ {
-    behaviors {
-        // Default layer: Mouse Back (single) / Mouse Forward (double)
-        enc_mouse: encoder_mouse {
-            compatible = "zmk,behavior-tap-dance";
-            #binding-cells = <0>;
-            tapping-term-ms = <200>;
-            bindings = <&mkp MB4>, <&mkp MB5>;
-        };
-        
-        // NUM layer: Play/Pause (single) / Next Track (double)
-        enc_media: encoder_media {
-            compatible = "zmk,behavior-tap-dance";
-            #binding-cells = <0>;
-            tapping-term-ms = <200>;
-            bindings = <&kp C_PP>, <&kp C_MUTE>;
-        };
-        
-        // NAV layer: Home (single) / End (double)
-        enc_nav: encoder_nav {
-            compatible = "zmk,behavior-tap-dance";
-            #binding-cells = <0>;
-            tapping-term-ms = <200>;
-            bindings = <&kp HOME>, <&kp END>;
-        };
-    };
-};
+ZMK_BEHAVIOR(enc_sw_right_def, tap_dance,
+    tapping-term-ms = <200>;
+    bindings = <&mkp MB4>, <&mkp MB5>;  // mouse back, forward
+)
+
+// NUM layer encoder switches  
+ZMK_BEHAVIOR(enc_sw_left_num, tap_dance,
+    tapping-term-ms = <200>;
+    bindings = <&kp LG(TAB)>, <XXX>;  // win+tab, nothing
+)
+
+ZMK_BEHAVIOR(enc_sw_right_num, tap_dance,
+    tapping-term-ms = <200>;
+    bindings = <&kp HOME>, <&kp END>;  // home, end
+)
+
+// NAV layer encoder switches
+ZMK_BEHAVIOR(enc_sw_left_nav, tap_dance,
+    tapping-term-ms = <200>;
+    bindings = <&kp LC(X)>, <&kp LC(V)>;  // cut, paste
+)
+
+ZMK_BEHAVIOR(enc_sw_right_nav, tap_dance,
+    tapping-term-ms = <200>;
+    bindings = <&kp LG(TAB)>, <XXX>;  // win+tab, nothing
+)
 
 ZMK_COMBO( z,      &kp Z,                        1  2, DEF)
 ZMK_COMBO( q,      &kp Q,                        7  8, DEF)
-ZMK_COMBO( ff,     &kp C_FAST_FORWARD,          32 33, NAV)
-ZMK_COMBO( rew,    &kp C_REWIND,                31 32, NAV)
 
-// Right encoder click combo (GPIO pin 7)
+// Right encoder click combo
 ZMK_COMBO( enc_click_def, &enc_mouse, 40 41, DEF)
 ZMK_COMBO( enc_click_num, &enc_media, 40 41, NUM)
 ZMK_COMBO( enc_click_nav, &enc_nav,   40 41, NAV)
@@ -90,9 +83,11 @@ ZMK_BEHAVIOR(tt, hold_tap,
 
 ZMK_LAYER_3(DEF,
     &kp TAB        &kp J           &kp G           &kp M           &kp P           &kp W            &kp MINUS     &kp U          &kp O         &kp Y         &kp K         &kp BSPC
-    &ss_cw         &kp R           &kp S           &kp N           &kp D           &kp B            &kp COMMA     &kp A          &kp E         &kp I         &lt NAV H     &kp Q
+    &ss_cw         &kp R           &kp S           &kp N           &kp D           &kp B            &kp COMMA     &kp A          &kp E         &kp I         &lt NAV H         &kp Q
     &kp LCTRL      &kp X           &kp F           &kp L           &kp C           &kp V            &kp SEMI      &kp DOT        &kp SLASH     &kp SQT       &kp BSLH      &kp ESC
-                                                   &kp Z           &kp T           &mo NUM          &lt NAV RET   &kp SPACE      &kp LALT,
+                                                   &kp Z           &kp T           &mo NUM          &lt NAV RET   &kp SPACE      &kp LALT
+    &enc_sw_left_def &enc_sw_right_def,
+    &inc_dec_kp C_VOL_UP C_VOL_DN
     &inc_dec_kp SCRL_UP SCRL_DOWN
 )
 
@@ -100,14 +95,18 @@ ZMK_LAYER_3(NUM,
     ___            XXX             XXX             XXX             XXX             XXX              &kp GRAVE     &kp LPAR       &kp RPAR      &kp LBRC      &kp RBRC      &kp BSPC
     XXX            &kp N1          &kp N2          &kp N3          &kp N4          &kp N5           &kp N6        &kp N7         &kp N8        &kp N9        &kp N0        &kp EQUAL
     ___            XXX             XXX             XXX             XXX             XXX              XXX           &kp LBKT       &kp RBKT      &kp LT        &kp GT        ___
-                                                   XXX             XXX             ___              &kp RET       &kp SPACE      &kp LALT,
-    &inc_dec_kp C_VOL_UP C_VOL_DN
+                                                   XXX             XXX             ___              &kp RET       &kp SPACE      &kp LALT
+    &enc_sw_left_num &enc_sw_right_num,
+    &inc_dec_kp LA(TAB) LA(LS(TAB))
+    &inc_dec_kp PG_UP PG_DN
 )
 
 ZMK_LAYER_3(NAV,
-    ___            &rgb_ug RGB_EFF &rgb_ug RGB_SPI &rgb_ug RGB_SAI &rgb_ug RGB_HUI &rgb_ug RGB_BRI  &kp C_VOL_UP  &kp HOME       &kp UP        &kp END       &kp LA(TAB)  &kp DEL
-    XXX            &rgb_ug RGB_EFR &rgb_ug RGB_SPD &rgb_ug RGB_SAD &rgb_ug RGB_HUD &rgb_ug RGB_BRD  &kp C_VOL_DN  &kp LEFT       &kp DOWN      &kp RIGHT     &lt NAV INS  &kp PG_UP
-    ___            &rgb_ug RGB_TOG &bt BT_SEL 0    &bt BT_SEL 1    &bt BT_SEL 3    &bt BT_CLR       &kp C_MUTE    &kp C_PREV     &kp C_PP      &kp C_NEXT    &kp LMETA    &kp PG_DN
-                                                   XXX             XXX             ___              &kp RET       &kp SPACE      &kp LALT,
-    &inc_dec_kp PG_UP PG_DN
+    ___            &rgb_ug RGB_EFF &rgb_ug RGB_SPI &rgb_ug RGB_SAI &rgb_ug RGB_HUI &rgb_ug RGB_BRI  &kp PSCRN     &kp HOME       &kp UP        &kp END       &kp INS      &kp DEL
+    XXX            &rgb_ug RGB_EFR &rgb_ug RGB_SPD &rgb_ug RGB_SAD &rgb_ug RGB_HUD &rgb_ug RGB_BRD  XXX           &kp LEFT       &kp DOWN      &kp RIGHT     XXX          &kp PG_UP
+    ___            &rgb_ug RGB_TOG &bt BT_SEL 0    &bt BT_SEL 1    &bt BT_SEL 3    &bt BT_CLR       XXX           XXX            XXX           XXX           &kp LMETA    &kp PG_DN
+                                                   XXX             XXX             ___              &kp RET       &kp SPACE      &kp LALT
+    &enc_sw_left_nav &enc_sw_right_nav,
+    &inc_dec_kp LC(Z) LC(Y)
+    &inc_dec_kp LA(TAB) LA(LS(TAB))
 )
