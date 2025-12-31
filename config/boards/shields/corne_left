@@ -14,11 +14,15 @@
 
 
 &left_encoder {
-	status = "disabled";
+	status = "okay";
 };
 
 &left_encoder_switch {
-    status = "disabled";
+    status = "okay";
+};
+
+&pro_micro_i2c {
+    status = "disabled"; 
 };
 
 &led_strip {
