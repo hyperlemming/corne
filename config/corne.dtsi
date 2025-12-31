@@ -55,16 +55,16 @@ RC(2,1) RC(2,2) RC(2,3) RC(2,4) RC(2,5)  RC(2,6) RC(2,7) RC(2,8) RC(2,9) RC(2,10
 
     left_encoder: encoder_left {
         compatible = "alps,ec11";
-        a-gpios = <&gpio0 20 (GPIO_PULL_UP | GPIO_ACTIVE_HIGH)>;
-        b-gpios = <&gpio0 17 (GPIO_PULL_UP | GPIO_ACTIVE_HIGH)>;
+        a-gpios = <&pro_micro 0 (GPIO_PULL_UP | GPIO_ACTIVE_HIGH)>;
+        b-gpios = <&pro_micro 1 (GPIO_PULL_UP | GPIO_ACTIVE_HIGH)>;
         steps = <60>;
         status = "disabled";
     };
     
     right_encoder: encoder_right {
         compatible = "alps,ec11";
-        a-gpios = <&gpio0 17(GPIO_PULL_UP | GPIO_ACTIVE_HIGH)>;
-        b-gpios = <&gpio0 20 (GPIO_PULL_UP | GPIO_ACTIVE_HIGH)>;
+        a-gpios = <&pro_micro 0(GPIO_PULL_UP | GPIO_ACTIVE_HIGH)>; #P0.06 aka &gpio0 6
+        b-gpios = <&pro_micro 1(GPIO_PULL_UP | GPIO_ACTIVE_HIGH)>; #P0.08 aka &gpio0 8
         steps = <60>;
         status = "disabled";
     };
@@ -73,11 +73,11 @@ RC(2,1) RC(2,2) RC(2,3) RC(2,4) RC(2,5)  RC(2,6) RC(2,7) RC(2,8) RC(2,9) RC(2,10
         compatible = "gpio-keys";
         
         left_encoder_switch: button_0 {
-            gpios = <&gpio0 7 (GPIO_PULL_UP | GPIO_ACTIVE_LOW)>;
+            gpios = <&pro_micro 2 (GPIO_PULL_UP | GPIO_ACTIVE_LOW)>;
         };
         
         right_encoder_switch: button_1 {
-            gpios = <&gpio0 7 (GPIO_PULL_UP | GPIO_ACTIVE_LOW)>;
+            gpios = <&pro_micro 2 (GPIO_PULL_UP | GPIO_ACTIVE_LOW)>; #P0.17 aka &gpio0 17
         };
     };
     
