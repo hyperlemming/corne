@@ -2,23 +2,36 @@
 
 / {
     chosen {
-        //zephyr,display = &nice_view;  // Changed from &oled
-        zmk,kscan = &mock_kscan;      // Point to mock kscan
+        zephyr,display = &oled;
+        zmk,kscan = &mock_kscan;
         zmk,physical-layout = &foostan_corne_6col_layout;
     };
 
-    // Override the kscan to be empty for dongle
     mock_kscan: mock_kscan {
         compatible = "zmk,kscan-gpio-direct";
-        input-gpios = <>;  // No keys on dongle
+        input-gpios = <>;
     };
 };
 
-// Disable I2C, enable SPI for nice!view
+// Enable I2C for OLED on dongle only
 &pro_micro_i2c {
-    status = "disabled";
+    status = "okay";
+    
+    oled: ssd1306@3c {
+        compatible = "solomon,ssd1306fb";
+        reg = <0x3c>;
+        width = <128>;
+        height = <64>;  // 64 pixels tall
+        segment-offset = <0>;
+        page-offset = <0>;
+        display-offset = <0>;
+        multiplex-ratio = <63>;  // height - 1
+        segment-remap;
+        com-invdir;
+        prechargep = <0x22>;
+    };
 };
 
 &pro_micro_spi {
-    status = "okay";
+    status = "disabled";
 };
