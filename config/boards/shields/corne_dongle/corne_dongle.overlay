@@ -9,7 +9,7 @@
     
     mock_kscan: mock_kscan {
         compatible = "zmk,kscan-gpio-direct";
-        input-gpios = <>;
+        input-gpios = <&pro_micro 16 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>;
     };
 };
 
