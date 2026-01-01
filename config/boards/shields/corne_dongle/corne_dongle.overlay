@@ -6,11 +6,24 @@
         zmk,kscan = &mock_kscan;
         zmk,physical-layout = &foostan_corne_6col_layout;
     };
-
+    
     mock_kscan: mock_kscan {
         compatible = "zmk,kscan-gpio-direct";
         input-gpios = <>;
     };
+};
+
+// Disable inherited kscans from corne.dtsi
+&kscan0 {
+    status = "disabled";
+};
+
+&encoder_kscan {
+    status = "disabled";
+};
+
+&composite_kscan {
+    status = "disabled";
 };
 
 // Enable I2C for OLED on dongle only
@@ -21,11 +34,11 @@
         compatible = "solomon,ssd1306fb";
         reg = <0x3c>;
         width = <128>;
-        height = <64>;  // 64 pixels tall
+        height = <64>;
         segment-offset = <0>;
         page-offset = <0>;
         display-offset = <0>;
-        multiplex-ratio = <63>;  // height - 1
+        multiplex-ratio = <63>;
         segment-remap;
         com-invdir;
         prechargep = <0x22>;
