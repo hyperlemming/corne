@@ -65,11 +65,6 @@ ZMK_BEHAVIOR(enc_sw_right_nav, tap_dance,
 ZMK_COMBO( z,      &kp Z,                        1  2, DEF)
 ZMK_COMBO( q,      &kp Q,                        7  8, DEF)
 
-// Right encoder click combo
-ZMK_COMBO( enc_click_def, &enc_mouse, 40 41, DEF)
-ZMK_COMBO( enc_click_num, &enc_media, 40 41, NUM)
-ZMK_COMBO( enc_click_nav, &enc_nav,   40 41, NAV)
-
 ZMK_BEHAVIOR(ss_cw, tap_dance,
     tapping-term-ms = <200>;
     bindings = <&sk LSHFT>, <&caps_word>;
