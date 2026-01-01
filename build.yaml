@@ -20,12 +20,12 @@
 ---
 include:
   # LEFT PERIPHERAL
-  - board: nice_nano_v2
+  - board: nice_nano
     shield: corne_left
     #-DCONFIG_ZMK_SPLIT_ROLE_CENTRAL=n as default, so I'm skipping  the define. Also _lef and _right treated as split by default so skipping -DCONFIG_ZMK_SPLIT=y as well
 
   # RIGHT PERIPHERAL  
-  - board: nice_nano_v2
+  - board: nice_nano
     shield: corne_right
     
     #NUMPAD PERIPHERAL 
@@ -34,11 +34,11 @@ include:
 #    cmake-args: -DCONFIG_ZMK_SPLIT=y
 
   # CENTRAL (DONGLE) with ZMK Studio and OLED
-  - board: nice_nano_v2
+  - board: nice_nano
     shield: corne_dongle
     snippet: studio-rpc-usb-uart
     cmake-args: -DCONFIG_ZMK_SPLIT=y -DCONFIG_ZMK_SPLIT_ROLE_CENTRAL=y -DCONFIG_ZMK_STUDIO=y
 
   # Settings reset (for initial pairing)
-  - board: nice_nano_v2
+  - board: nice_nano
     shield: settings_reset
