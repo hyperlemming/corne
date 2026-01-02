@@ -5,6 +5,7 @@
         zephyr,display = &oled;
         zmk,kscan = &mock_kscan;
         zmk,physical-layout = &foostan_corne_6col_layout;
+        zmk,split-role-central;  // Dongle is central
     };
     
     mock_kscan: mock_kscan {
