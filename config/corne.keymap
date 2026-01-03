@@ -78,7 +78,7 @@ ZMK_BEHAVIOR(tt, hold_tap,
 )
 
 ZMK_LAYER_3(DEF,
-    &kp TAB        &kp Q           &kp G           &kp M           &kp P           &kp W            &kp MINUS     &kp U          &kp O         &kp Y         &kp K         &kp BSPC
+    &kp TAB        &kp J           &kp G           &kp M           &kp P           &kp W            &kp MINUS     &kp U          &kp O         &kp Y         &kp K         &kp BSPC
     &ss_cw         &kp R           &kp S           &kp N           &kp D           &kp B            &kp COMMA     &kp A          &kp E         &kp I         &lt NAV H         &kp Q
     &kp LCTRL      &kp X           &kp F           &kp L           &kp C           &kp V            &kp SEMI      &kp DOT        &kp SLASH     &kp SQT       &kp BSLH      &kp ESC
                                                    &kp Z           &kp T           &mo NUM          &lt NAV RET   &kp SPACE      &kp LALT
