@@ -1,13 +1,13 @@
 include:
   # LEFT PERIPHERAL
-  - board: nice_nano
-    shield: corne_left
-    cmake-args: -DCONFIG_ZMK_SPLIT=y -DCONFIG_ZMK_SPLIT_ROLE_CENTRAL=n -DCONFIG_BT_CENTRAL=n
+  #- board: nice_nano
+  #  shield: corne_left
+  #  cmake-args: -DCONFIG_ZMK_SPLIT=y -DCONFIG_ZMK_SPLIT_ROLE_CENTRAL=n -DCONFIG_BT_CENTRAL=n
 
   # RIGHT PERIPHERAL  
-  - board: nice_nano
-    shield: corne_right
-    cmake-args: -DCONFIG_ZMK_SPLIT=y -DCONFIG_ZMK_SPLIT_ROLE_CENTRAL=n -DCONFIG_BT_CENTRAL=n
+  #- board: nice_nano
+  #  shield: corne_right
+  #  cmake-args: -DCONFIG_ZMK_SPLIT=y -DCONFIG_ZMK_SPLIT_ROLE_CENTRAL=n -DCONFIG_BT_CENTRAL=n
     
     #NUMPAD PERIPHERAL 
 #  - board: nice_nano_v2
