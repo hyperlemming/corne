@@ -40,7 +40,6 @@
         page-offset = <0>;
         display-offset = <0>;
         multiplex-ratio = <63>;
-        segment-remap;
         com-sequential;
         prechargep = <0x22>;
     };
