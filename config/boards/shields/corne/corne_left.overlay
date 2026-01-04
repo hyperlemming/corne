@@ -1,5 +1,4 @@
 #include "corne.dtsi"
-#include <dt-bindings/led/led.h>
 
 &kscan0 {
     col-gpios
