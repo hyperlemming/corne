@@ -3,14 +3,7 @@
 / {
     chosen {
         zephyr,display = &oled;
-        zmk,kscan = &mock_kscan;
         zmk,physical-layout = &foostan_corne_6col_layout;
-        zmk,split-role-central;  // Dongle is central
-    };
-    
-    mock_kscan: mock_kscan {
-        compatible = "zmk,kscan-gpio-direct";
-        input-gpios = <&pro_micro 16 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>;
     };
 };
 
