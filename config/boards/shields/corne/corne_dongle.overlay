@@ -3,7 +3,15 @@
 / {
     chosen {
         zephyr,display = &oled;
+        zmk,kscan = &mock_kscan;
         zmk,physical-layout = &foostan_corne_6col_layout;
+    };
+
+    mock_kscan: mock_kscan {
+        compatible = "zmk,kscan-mock";
+        columns = <0>;
+        rows = <0>;
+        exit-after;
     };
 };
 
