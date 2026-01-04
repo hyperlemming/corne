@@ -27,6 +27,7 @@ endif
 if SHIELD_CORNE_LEFT || SHIELD_CORNE_RIGHT
 
 config ZMK_SPLIT_BLE_CENTRAL_NAME
+	string
     default "VKB"
 
 endif
